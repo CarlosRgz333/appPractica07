@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -35,6 +37,13 @@ public class LstActivity extends AppCompatActivity {
         Bundle datos = getIntent().getExtras();
         Usuarios user = (Usuarios) datos.getSerializable("usuario");
         lblUser.setText(user.getNombreCompleto());
+
+        lstAlumnos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(LstActivity.this, "Seleccionó el nombre "+adapterView.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
